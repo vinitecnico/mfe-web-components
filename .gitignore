@@ -1,0 +1,10 @@
+micro-fe-wrapper/node_modules
+
+micro-fe-react/node_modules
+micro-fe-react/dist
+
+micro-fe-ng/node_modules
+micro-fe-ng/dist
+
+micro-fe-my-app/node_modules
+micro-fe-my-app/build
