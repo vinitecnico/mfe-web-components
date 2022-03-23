@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM, { render } from "react-dom";
-import App from './App'
+import ReactDOM from "react-dom";
+import App from "./App";
 import "./index.css";
 
 class ReactElement extends HTMLElement {
@@ -9,10 +9,13 @@ class ReactElement extends HTMLElement {
   }
 
   connectedCallback() {
-    ReactDOM.render(
-      <App />,
-      this
-    );
+    console.log("here >>>", this);
+    const props = {
+      name: this.getAttribute("name"),
+      onhelloevt: this.getAttribute("onhelloevt")
+    };
+
+    ReactDOM.render(<App {...props} />, this);
   }
 }
 

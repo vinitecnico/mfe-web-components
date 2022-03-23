@@ -1,25 +1,31 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+const App = ({
+  name,
+  onhelloevt,
+}: {
+  name?: string | null;
+  onhelloevt: any;
+}) => {
+  const handerClick = () => {
+    console.log("here >>>", name, onhelloevt);
+    onhelloevt()
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src="/images/react.png" className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="exampleComponent">
+      <img src="/images/react.png" alt="React Logo" className="logo" />
+      <p>
+        Hello <strong>{name}</strong> from your friendly React component.
+      </p>
+      <button
+        className="btn btn-secondary"
+        onClick={handerClick}
+      >
+        Say hello
+      </button>
     </div>
   );
-}
+};
 
 export default App;
