@@ -3,15 +3,11 @@ import "./App.css";
 
 const App = ({
   name,
-  onhelloevt,
+  onHelloEvt,
 }: {
   name?: string | null;
-  onhelloevt: any;
-}) => {
-  const handerClick = () => {
-    console.log("here >>>", name, onhelloevt);
-    onhelloevt()
-  }
+  onHelloEvt: any;
+} | any) => {
   return (
     <div className="exampleComponent">
       <img src="/images/react.png" alt="React Logo" className="logo" />
@@ -20,7 +16,7 @@ const App = ({
       </p>
       <button
         className="btn btn-secondary"
-        onClick={handerClick}
+        onClick={onHelloEvt}
       >
         Say hello
       </button>
