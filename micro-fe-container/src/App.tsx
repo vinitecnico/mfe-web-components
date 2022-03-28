@@ -12,6 +12,11 @@ const App: React.FC = () => {
         document.body.appendChild(script);
       }
     );
+
+    return () => {
+      const list = document.getElementById("script");
+      console.log('here >>>', list)
+    }
   }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
