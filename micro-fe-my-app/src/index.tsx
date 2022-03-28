@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 import App from "./App";
-import "./index.css";
 
 class ReactElement extends HTMLElement {
   constructor() {
@@ -14,7 +13,7 @@ class ReactElement extends HTMLElement {
       .find(key => key.toLowerCase() === attrName);
     let value = attrValue;
     if (attrValue === 'true' || attrValue === 'false') 
-      value = attrValue == 'true';      
+      value = attrValue === 'true';      
     else if (!isNaN(attrValue) && attrValue !== '') 
       value = +attrValue;      
     else if (/^{.*}/.exec(attrValue)) 

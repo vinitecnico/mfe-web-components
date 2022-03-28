@@ -8,3 +8,6 @@ micro-fe-ng/dist
 
 micro-fe-my-app/node_modules
 micro-fe-my-app/build
+
+micro-fe-container/node_modules
+micro-fe-container/build
