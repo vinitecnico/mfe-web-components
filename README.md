@@ -36,7 +36,7 @@ npm start
 ## Build and serve wrapper
 
 ```sh
-cd micro-fe-wrapper
+cd micro-fe-container
 npm i
 npm start
 ```

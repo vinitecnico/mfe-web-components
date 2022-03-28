@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ConsoleMessage } from "./components";
 import Routes from "./routes";
 import { tellComponents } from "./util";
 
@@ -66,14 +67,7 @@ const App: React.FC = () => {
         <Routes />
         {/* added router */}
 
-        <div className="row console">
-          <div className="col">
-            <div className="alert alert-dark" role="alert">
-              <h4 className="alert-heading">Console</h4>
-              <div id="messages"></div>
-            </div>
-          </div>
-        </div>
+        <ConsoleMessage />
 
         <div className="row">
           <div className="repo">
