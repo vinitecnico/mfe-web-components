@@ -76,11 +76,11 @@ const validateRules = (rules, item) => {
 };
 
 const getItemValue = (fieldName, item) => {
-  let _item = item;
+  let _itemValue = item;
   fieldName
     ?.split(".")
-    ?.forEach((fieldNameItem) => (_item = _item[fieldNameItem]));
-  return _item;
+    ?.forEach((fieldNameItem) => (_itemValue = _itemValue[fieldNameItem]));
+  return _itemValue;
 };
 
 console.log("here >>>", setTranslate(item));
