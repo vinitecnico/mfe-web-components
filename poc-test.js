@@ -100,11 +100,14 @@ const validateRules = (rules, item) => {
 };
 
 const getItemValue = (fieldName, item) => {
-  let _itemValue = item;
-  fieldName
+  const result = fieldName
     ?.split(".")
-    ?.forEach((fieldNameItem) => (_itemValue = _itemValue[fieldNameItem]));
-  return _itemValue;
+    .reduce(
+      (itemValue, fieldNameItem) => itemValue[fieldNameItem],
+      item
+    );
+
+  return result;
 };
 
 items.forEach((item) => {
