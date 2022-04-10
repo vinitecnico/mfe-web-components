@@ -1,11 +1,29 @@
-const item = {
-  type: "type1",
-  category: "category1",
-  data: {
-    program_id: 8659,
-    card_type: "plastic",
+const items = [
+  {
+    type: "type1",
+    category: "category1",
+    data: {
+      program_id: 8659,
+      card_type: "plastic",
+    },
   },
-};
+  {
+    type: "type1",
+    category: "category1",
+    data: {
+      program_id: 8659,
+      card_type: "Recurring",
+    },
+  },
+  {
+    type: "type1",
+    category: "category2",
+    data: {
+      program_id: 8659,
+      card_type: "Recurring",
+    },
+  },
+];
 
 const mappers = [
   {
@@ -31,36 +49,35 @@ const mappers = [
 ];
 
 const setTranslate = (item) => {
-  let result = mappers.find(
+  let mapperItem = mappers.find(
     ({ type, category }) => item.type === type && item.category === category
   );
 
-  if (!result) return null;
+  if (!mapperItem) return null;
 
-  if (result?.predicates?.length > 0) {
-    result?.predicates?.forEach((predicate) => {
+  if (mapperItem?.predicates?.length > 0) {
+    mapperItem?.predicates?.forEach((predicate) => {
       const rulesItem = validateRules(predicate?.rules, item);
       if (rulesItem) {
-        result = {
-          ...result,
+        mapperItem = {
+          ...mapperItem,
           translate: predicate?.translate,
           modalName: predicate?.modalName,
         };
-        return result;
+        return mapperItem;
       }
     });
   }
 
   return {
-    translate: result?.translate,
-    modalName: result?.modalName,
+    translate: mapperItem?.translate,
+    modalName: mapperItem?.modalName,
   };
 };
 
 const validateRules = (rules, item) => {
+  let validate = false;
   rules?.forEach(({ fieldName, value, type }) => {
-    let validate = false;
-
     switch (type) {
       case "DIFFERENT":
         validate = getItemValue(fieldName, item) != value;
@@ -79,7 +96,7 @@ const validateRules = (rules, item) => {
     if (!validate) return null;
   });
 
-  return rules;
+  return validate ? rules : null;
 };
 
 const getItemValue = (fieldName, item) => {
@@ -90,4 +107,6 @@ const getItemValue = (fieldName, item) => {
   return _itemValue;
 };
 
-console.log("here >>>", setTranslate(item));
+items.forEach((item) => {
+  console.log("here >>>", setTranslate(item));
+});
