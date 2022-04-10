@@ -16,7 +16,11 @@ const mappers = [
     predicates: [
       {
         rules: [
-          { fieldName: "data.program_id", type: "EQUAL", value: "8659" },
+          {
+            fieldName: "data.program_id",
+            type: "LIST_INCLUDE",
+            value: [8659, 99],
+          },
           { fieldName: "data.card_type", type: "EQUAL", value: "plastic" },
         ],
         translate: "translate Custom",
@@ -63,6 +67,9 @@ const validateRules = (rules, item) => {
         break;
       case "INCLUDE":
         validate = getItemValue(fieldName, item)?.includes(value);
+        break;
+      case "LIST_INCLUDE":
+        validate = value?.includes(getItemValue(fieldName, item));
         break;
       default:
         validate = getItemValue(fieldName, item) == value;
